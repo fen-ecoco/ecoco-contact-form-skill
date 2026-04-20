@@ -867,7 +867,7 @@
                 </div>
 
                 <!-- 站點：城市 + 站點名稱 (兩欄) -->
-                <div class="slide-down" id="stationGroup">
+                <div class="slide-down" id="stationGroup" style="position: relative; z-index: 50;">
                     <div class="form-group">
                         <label id="stationLabel">發生站點 <span class="required">*</span></label>
                         <div class="station-row">
@@ -907,7 +907,8 @@
                 <div class="upload-area" id="uploadArea">
                     <div class="upload-icon">📷</div>
                     <p style="font-size: 1.1rem; color: var(--text-main); margin-bottom: 8px;">
-                        <strong>點擊並選擇檔案</strong>，或將檔案拖曳至此</p>
+                        <strong>點擊並選擇檔案</strong>，或將檔案拖曳至此
+                    </p>
                     <p style="font-size: 0.9rem; color: var(--brand-blue);">圖片最多 3 張，影片最多 1 個<br>限制 5MB，支援
                         JPG/PNG/MP4/MOV</p>
                     <input type="file" id="fileInput" multiple
@@ -1036,42 +1037,42 @@
         // ============================================================
         const faqDatabase = [
             {
-                keywords: ['怎麼註冊會員', '如何註冊會員', '如何註冊ECOCO', '怎麼註冊ECOCO', '要怎麼註冊'],
+                keywords: ['怎麼註冊', '如何註冊', '註冊教學', '要註冊', '申請會員', '加入會員', '變會員'],
                 url: 'https://www.ecocogroup.com/qa/', title: '如何註冊ECOCO會員？',
                 path: '官網 / 常見問題 / 註冊下載問題 / 如何註冊ECOCO會員？'
             },
             {
-                keywords: ['收不到驗證碼', '驗證碼收不到', '沒收到驗證碼', '驗證碼沒來', '簡訊驗證碼'],
+                keywords: ['收不到驗證碼', '驗證碼沒來', '沒收到驗證碼', '簡訊驗證碼', '沒有驗證碼', '傳不出驗證碼'],
                 url: 'https://www.ecocogroup.com/qa/', title: '為何收不到手機驗證碼簡訊？',
                 path: '官網 / 常見問題 / 註冊下載問題 / 為何收不到手機驗證碼簡訊？'
             },
             {
-                keywords: ['忘記密碼', '密碼忘記', '修改密碼', '更改密碼', '密碼錯誤怎麼辦', '被鎖住了'],
+                keywords: ['忘記密碼', '密碼忘記', '修改密碼', '更改密碼', '密碼錯誤', '被鎖住', '無法登入'],
                 url: 'https://www.ecocogroup.com/qa/', title: '如何修改密碼',
                 path: '官網 / 常見問題 / 帳號設定問題 / 如何修改密碼'
             },
             {
-                keywords: ['門號停用', '手機號碼停用', '舊號碼換新號', '換了新門號', '換手機號碼', '號碼換了'],
+                keywords: ['門號停用', '換新號', '換門號', '換手機號碼', '號碼換了', '舊號碼', '手機號碼停用'],
                 url: 'https://www.ecocogroup.com/qa/', title: '手機號碼停用，如何申請轉換帳號呢？',
                 path: '官網 / 常見問題 / 帳號設定問題 / 手機號碼停用，如何申請轉換帳號呢？'
             },
             {
-                keywords: ['哪裡有站點', '站點在哪', '查詢站點', '怎麼找機台', '附近有機台嗎', '可以回收什麼', '可以投什麼瓶', '能投哪些瓶子', '回收品項有哪些'],
+                keywords: ['哪裡有站點', '站點在哪', '查詢站點', '怎麼找機台', '附近有機台', '回收什麼', '可以投什麼', '能投哪些', '回收品項', '回收項目', '機台位置', '去哪裡投', '站點位置'],
                 url: 'https://www.ecocogroup.com/qa/', title: '如何查詢ECOCO站點與回收品項?',
                 path: '官網 / 常見問題 / 使用設備相關 / 如何查詢ECOCO站點與回收品項?'
             },
             {
-                keywords: ['一直被退瓶', '瓶子退出來', '不吃瓶子', '瓶子被退回', '不能投瓶子', '投進去退回來'],
+                keywords: ['一直被退瓶', '退出來', '不吃瓶子', '被退回', '不能投瓶子', '退回', '投不進', '一直退出', '無法投瓶'],
                 url: 'https://www.ecocogroup.com/qa/', title: '投瓶時，為什麼一直被機台退瓶？',
                 path: '官網 / 常見問題 / 使用設備相關 / 投瓶時，為什麼一直被機台退瓶？'
             },
             {
-                keywords: ['機台黑屏', '螢幕黑屏', '機台滿袋', '投到一半機台黑掉', '中途黑屏', '投瓶中斷點數不見'],
+                keywords: ['黑屏', '黑掉', '螢幕壞掉', '螢幕沒顯示', '機台滿了', '滿袋', '袋子滿了', '中斷'],
                 url: 'https://www.ecocogroup.com/qa/', title: '投瓶到一半，機台螢幕出現黑屏或機台滿袋，我的點數是否會不見呢？',
                 path: '官網 / 常見問題 / 使用設備相關 / 投瓶到一半，機台螢幕出現黑屏或機台滿袋，我的點數是否會不見呢？'
             },
             {
-                keywords: ['點數沒收到', '點數沒入帳', '點數沒有進去', '沒獲得點數', '投完沒有點數', '為什麼沒點數', '點數不見了', '漏給點數'],
+                keywords: ['點數沒收到', '點數沒入帳', '點數沒有進', '沒獲得點數', '沒有點數', '沒點數', '點數不見', '漏給點數', '沒加到分', '沒給點數'],
                 url: 'https://www.ecocogroup.com/qa/', title: '為何沒有獲得回饋點數？',
                 path: '官網 / 常見問題 / 點數相關 / 為何沒收到點數？'
             }
