@@ -832,14 +832,14 @@
                         <label>具體問題類型 <span class="required">*</span></label>
                         <div class="radio-group" style="margin-bottom: 8px;">
                             <div class="radio-card"><input type="radio" name="machineSubProblem" id="subPoint"
-                                    value="點數未入帳"><label for="subPoint">🪙 點數未入帳</label></div>
+                                    value="點數未入帳" onchange="toggleItems()"><label for="subPoint">🪙 點數未入帳</label></div>
                             <div class="radio-card"><input type="radio" name="machineSubProblem" id="subMachine"
-                                    value="機台操作異常"><label for="subMachine">⚙️ 機台操作異常</label></div>
+                                    value="機台操作異常" onchange="toggleItems()"><label for="subMachine">⚙️ 機台操作異常</label>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- 機台：第二層 設備類型 (機台操作 與 點數異常 皆顯示) -->
                 <div class="slide-down" id="machineTypeGroup" style="margin-bottom: 26px;">
                     <div class="form-group">
                         <label>機台類型 <span class="required">*</span></label>
@@ -852,7 +852,7 @@
                                     onchange="toggleArk()"><label for="typeArk">方舟</label></div>
                         </div>
                     </div>
-                    <!-- 方舟選單 -->
+
                     <div class="slide-down" id="arkPositionGroup"
                         style="background: #f8fafc; padding: 15px; border-radius: 8px; border: 1px dashed var(--brand-light-blue); margin-bottom: 15px;">
                         <label style="margin-bottom: 8px;">方舟特定位置 <span class="required">*</span></label>
@@ -863,6 +863,51 @@
                             <option value="右邊數來第三台">👉 右邊數來第三台</option>
                             <option value="右邊數來第四台">👉 右邊數來第四台</option>
                         </select>
+                    </div>
+
+                    <div class="slide-down" id="missingItemsGroup"
+                        style="background: #fffcf8; padding: 15px; border-radius: 8px; border: 1px solid var(--brand-orange); margin-bottom: 15px;">
+                        <label style="margin-bottom: 8px; color: var(--brand-orange);">未計數的品項與數量</label>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 12px;">請填寫未分配到點數的單類別數量
+                            (若無請留空)：</p>
+
+                        <div id="bottleItems" style="display: none; flex-wrap: wrap; gap: 12px; margin-bottom: 12px;">
+                            <div
+                                style="flex: 1 1 45%; display: flex; align-items: center; justify-content: space-between;">
+                                <label style="margin:0; font-weight: 500;">PET寶特瓶</label><input type="number"
+                                    id="qtyPET" min="0" class="form-control"
+                                    style="width: 80px; padding: 8px; text-align: center;" placeholder="0">
+                            </div>
+                            <div
+                                style="flex: 1 1 45%; display: flex; align-items: center; justify-content: space-between;">
+                                <label style="margin:0; font-weight: 500;">PP塑膠杯</label><input type="number" id="qtyPP"
+                                    min="0" class="form-control" style="width: 80px; padding: 8px; text-align: center;"
+                                    placeholder="0">
+                            </div>
+                            <div
+                                style="flex: 1 1 45%; display: flex; align-items: center; justify-content: space-between;">
+                                <label style="margin:0; font-weight: 500;">HDPE牛奶瓶</label><input type="number"
+                                    id="qtyHDPE" min="0" class="form-control"
+                                    style="width: 80px; padding: 8px; text-align: center;" placeholder="0">
+                            </div>
+                            <div
+                                style="flex: 1 1 45%; display: flex; align-items: center; justify-content: space-between;">
+                                <label style="margin:0; font-weight: 500;">鋁罐</label><input type="number" id="qtyCan"
+                                    min="0" class="form-control" style="width: 80px; padding: 8px; text-align: center;"
+                                    placeholder="0">
+                            </div>
+                        </div>
+
+                        <div id="batteryItems" style="display: none; flex-direction: column; gap: 12px;">
+                            <div style="display: flex; align-items: center; justify-content: space-between;"><label
+                                    style="margin:0; font-weight: 500;">1-2號與9V電池</label><input type="number"
+                                    id="qtyBat1" min="0" class="form-control"
+                                    style="width: 80px; padding: 8px; text-align: center;" placeholder="0"></div>
+                            <div style="display: flex; align-items: center; justify-content: space-between;"><label
+                                    style="margin:0; font-weight: 500;">3-6號電池</label><input type="number" id="qtyBat3"
+                                    min="0" class="form-control" style="width: 80px; padding: 8px; text-align: center;"
+                                    placeholder="0"></div>
+                        </div>
                     </div>
                 </div>
 
@@ -1075,13 +1120,16 @@
                 keywords: ['點數沒收到', '點數沒入帳', '點數沒有進', '沒獲得點數', '沒有點數', '沒點數', '點數不見', '漏給點數', '沒加到分', '沒給點數'],
                 url: 'https://www.ecocogroup.com/qa/', title: '為何沒有獲得回饋點數？',
                 path: '官網 / 常見問題 / 點數相關 / 為何沒收到點數？'
+            },
+            {
+                keywords: ['設置站點', '增設站點', '新增站點', '設立站點', '我要設站', '想要機台', '可以來裝'],
+                url: 'https://www.ecocogroup.com/qa/', title: '如何申請成為ECOCO環保站點？',
+                path: '官網 / 常見問題 / 其他建議與合作相關 / 如何申請成為ECOCO環保站點？'
             }
         ];
 
         function checkFaqMatch(desc, type) {
             if (!desc || !type) return null;
-            // 「其他建議」與「帳號」類別不做 FAQ 攔截
-            if (type === 'other' || type === 'account') return null;
             const lowerDesc = desc.toLowerCase();
             for (let faq of faqDatabase) {
                 for (let kw of faq.keywords) {
@@ -1119,7 +1167,7 @@
             const type = document.getElementById('issueType').value;
             const issueDesc = document.getElementById('issueDesc');
             // 重設所有動態區塊
-            ['stationGroup', 'datetimeGroup', 'accountTransferGroup', 'transferFormGroup', 'machineSubProblemGroup', 'machineTypeGroup', 'arkPositionGroup'].forEach(id => document.getElementById(id).classList.remove('open'));
+            ['stationGroup', 'datetimeGroup', 'accountTransferGroup', 'transferFormGroup', 'machineSubProblemGroup', 'machineTypeGroup', 'arkPositionGroup', 'missingItemsGroup'].forEach(id => document.getElementById(id).classList.remove('open'));
             document.getElementById('descGroup').style.display = 'block';
             isTransferMode = false;
             document.getElementById('selectedStation').value = '';
@@ -1127,6 +1175,9 @@
             document.getElementById('stationSearch').disabled = true;
             document.getElementById('citySelect').value = '';
             document.getElementById('arkPosition').value = '';
+            ['qtyPET', 'qtyPP', 'qtyHDPE', 'qtyCan', 'qtyBat1', 'qtyBat3'].forEach(id => {
+                if (document.getElementById(id)) document.getElementById(id).value = '';
+            });
             document.querySelectorAll('input[name="needTransfer"], input[name="machineSubProblem"], input[name="machineType"]').forEach(r => r.checked = false);
             document.getElementById('uploadDesc').innerText = '附上發生問題時的影片或異常照片，能大幅縮短工程團隊處理問題的時間！';
 
@@ -1159,6 +1210,26 @@
             } else {
                 document.getElementById('arkPositionGroup').classList.remove('open');
                 document.getElementById('arkPosition').value = '';
+            }
+            toggleItems();
+        }
+
+        function toggleItems() {
+            const subPoint = document.getElementById('subPoint');
+            const isMissingPoints = subPoint && subPoint.checked;
+            const isBottle = document.getElementById('typeBottle') && document.getElementById('typeBottle').checked;
+            const isBattery = document.getElementById('typeBattery') && document.getElementById('typeBattery').checked;
+            const isArk = document.getElementById('typeArk') && document.getElementById('typeArk').checked;
+
+            const group = document.getElementById('missingItemsGroup');
+            if (!group) return;
+
+            if (isMissingPoints && (isBottle || isBattery || isArk)) {
+                group.classList.add('open');
+                document.getElementById('bottleItems').style.display = (isBottle || isArk) ? 'flex' : 'none';
+                document.getElementById('batteryItems').style.display = (isBattery || isArk) ? 'flex' : 'none';
+            } else {
+                group.classList.remove('open');
             }
         }
 
@@ -1296,6 +1367,19 @@
                 let prefix = [];
                 if (subProbStr) prefix.push(`【具體問題：${subProbStr}】`);
                 if (mTypeStr) prefix.push(`【機台類型：${mTypeStr}】`);
+
+                let itemsArr = [];
+                if (document.getElementById('missingItemsGroup').classList.contains('open')) {
+                    const getV = id => document.getElementById(id).value;
+                    if (getV('qtyPET')) itemsArr.push(`PET寶特瓶:${getV('qtyPET')}`);
+                    if (getV('qtyPP')) itemsArr.push(`PP塑膠杯:${getV('qtyPP')}`);
+                    if (getV('qtyHDPE')) itemsArr.push(`HDPE牛奶瓶:${getV('qtyHDPE')}`);
+                    if (getV('qtyCan')) itemsArr.push(`鋁罐:${getV('qtyCan')}`);
+                    if (getV('qtyBat1')) itemsArr.push(`1-2號與9V電池:${getV('qtyBat1')}`);
+                    if (getV('qtyBat3')) itemsArr.push(`3-6號電池:${getV('qtyBat3')}`);
+                }
+                if (itemsArr.length > 0) prefix.push(`【未獲點數量：${itemsArr.join(', ')}】`);
+
                 if (prefix.length > 0) finalDesc = prefix.join(' ') + '\n\n' + issueDesc;
             }
 
