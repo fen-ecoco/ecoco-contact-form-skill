@@ -767,7 +767,7 @@
                     <select class="form-control" id="issueType" onchange="updateSubOptions()">
                         <option value="">請選擇最符合的分類</option>
                         <option value="machine">機台操作 / 點數累積 / 故障回報</option>
-                        <option value="point">點數兌換 / APP與兌換異常</option>
+                        <option value="point">點數兌換 / APP異常</option>
                         <option value="account">帳號登入 / 資料修改</option>
                         <option value="other">其他建議與合作相關</option>
                     </select>
@@ -848,9 +848,11 @@
                         <label>具體問題類型 <span class="required">*</span></label>
                         <div class="radio-group" style="margin-bottom: 8px;">
                             <div class="radio-card"><input type="radio" name="pointSubProblem" id="subExchange"
-                                    value="點數兌換優惠"><label for="subExchange">🏪 點數兌換優惠</label></div>
+                                    value="點數兌換優惠" onchange="togglePointItems()"><label for="subExchange">🏪
+                                    點數兌換優惠</label></div>
                             <div class="radio-card"><input type="radio" name="pointSubProblem" id="subApp"
-                                    value="APP使用異常"><label for="subApp">📱 APP使用異常</label></div>
+                                    value="APP使用異常" onchange="togglePointItems()"><label for="subApp">📱 APP使用異常</label>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -931,17 +933,19 @@
                     <div class="form-group" style="margin-bottom: 0;">
                         <label id="stationLabel">發生站點 <span class="required">*</span></label>
                         <div class="station-row">
-                            <div class="city-col">
+                            <div class="city-col" id="cityColWrapper">
                                 <select class="form-control" id="citySelect" onchange="onCityChange()">
                                     <option value="">選擇城市</option>
                                 </select>
                             </div>
-                            <div class="name-col dropdown-wrapper">
-                                <input type="text" class="form-control" id="stationSearch" placeholder="選擇城市後，請直接填寫站點名稱"
+                            <div class="name-col dropdown-wrapper" id="stationColWrapper">
+                                <input type="text" class="form-control" id="stationSearch" placeholder="選擇城市後，請直接填寫"
                                     disabled>
+                                <div class="dropdown-list" id="stationList"></div>
                             </div>
                         </div>
-                        <div class="station-loading" id="stationLoading">⏳ 城市資料載入中...</div>
+                        <input type="hidden" id="selectedStation">
+                        <div class="station-loading" id="stationLoading">⏳ 站點資料載入中...</div>
                     </div>
                 </div>
 
@@ -1054,10 +1058,22 @@
                         const rawCity = extractCity(s.address);
                         return { name: s.name, address: s.address, city: rawCity, displayCity: cityDisplayMap[rawCity] || rawCity, code: s.code || '' };
                     });
-                    // 建立城市下拉清單（依站數由多到少排序）
-                    const cityCount = {};
-                    allStations.forEach(s => { cityCount[s.displayCity] = (cityCount[s.displayCity] || 0) + 1; });
-                    cityList = Object.keys(cityCount).sort((a, b) => cityCount[b] - cityCount[a]);
+                    // 建立城市清單並照台灣由北到南排序
+                    const northToSouthOrder = [
+                        '基隆', '台北', '新北', '桃園', '新竹市', '新竹縣', '苗栗',
+                        '台中', '彰化', '南投', '雲林', '嘉義市', '嘉義縣',
+                        '台南', '高雄', '屏東',
+                        '宜蘭', '花蓮', '台東',
+                        '澎湖', '金門', '連江'
+                    ];
+                    cityList = [...new Set(allStations.map(s => s.displayCity))].filter(c => c !== '其他');
+                    cityList.sort((a, b) => {
+                        let iA = northToSouthOrder.indexOf(a);
+                        let iB = northToSouthOrder.indexOf(b);
+                        iA = iA === -1 ? 99 : iA;
+                        iB = iB === -1 ? 99 : iB;
+                        return iA - iB;
+                    });
 
                     const citySelect = document.getElementById('citySelect');
                     cityList.forEach(c => {
@@ -1077,15 +1093,55 @@
         function onCityChange() {
             const city = document.getElementById('citySelect').value;
             const searchInput = document.getElementById('stationSearch');
+            const hidden = document.getElementById('selectedStation');
 
-            if (city) {
-                searchInput.disabled = false;
-                searchInput.placeholder = `請在 ${city} 中填寫站點名稱`;
-            } else {
-                searchInput.disabled = true;
-                searchInput.value = '';
-                searchInput.placeholder = '請先選擇城市';
+            if (document.getElementById('issueType').value === 'machine') {
+                searchInput.value = ''; hidden.value = '';
+                if (city) {
+                    filteredStations = allStations.filter(s => s.displayCity === city || s.city === city);
+                    searchInput.disabled = false;
+                    searchInput.placeholder = `在 ${city} 中搜尋站點 (共${filteredStations.length}站)`;
+                } else {
+                    filteredStations = [];
+                    searchInput.disabled = true;
+                    searchInput.placeholder = '請先選擇城市';
+                }
             }
+        }
+
+        function setupSearchDropdown() {
+            const searchInput = document.getElementById('stationSearch');
+            const stationList = document.getElementById('stationList');
+            const hidden = document.getElementById('selectedStation');
+
+            searchInput.addEventListener('input', function () {
+                if (document.getElementById('issueType').value !== 'machine') {
+                    hidden.value = this.value; // For point/exchange logic, simple free text pass-through
+                    return;
+                }
+                const kw = this.value.trim().toLowerCase();
+                stationList.innerHTML = '';
+                if (!kw) { stationList.classList.remove('active'); return; }
+                const matched = filteredStations.filter(s => s.name.toLowerCase().includes(kw) || s.address.toLowerCase().includes(kw));
+                if (matched.length > 0) {
+                    matched.forEach(s => {
+                        let item = document.createElement('div'); item.className = 'dropdown-item';
+                        item.innerHTML = `<strong>${s.name}</strong><br><small style="color:#94a3b8;">${s.address}</small>`;
+                        item.onclick = function () {
+                            searchInput.value = s.name; hidden.value = s.name;
+                            stationList.classList.remove('active');
+                        };
+                        stationList.appendChild(item);
+                    });
+                    stationList.classList.add('active');
+                } else {
+                    stationList.classList.remove('active');
+                }
+            });
+
+            document.addEventListener('click', function (e) {
+                if (!e.target.closest('#stationColWrapper')) { if (stationList) stationList.classList.remove('active'); }
+            });
         }
 
         // ============================================================
@@ -1170,6 +1226,7 @@
             document.getElementById('nextBtn').addEventListener('click', handleNext);
             document.getElementById('prevBtn').addEventListener('click', handlePrev);
             setupEmailAutocomplete();
+            setupSearchDropdown();
             setupFileUpload();
         });
 
@@ -1180,10 +1237,12 @@
             ['stationGroup', 'datetimeGroup', 'accountTransferGroup', 'transferFormGroup', 'machineSubProblemGroup', 'machineTypeGroup', 'arkPositionGroup', 'missingItemsGroup', 'pointSubProblemGroup'].forEach(id => document.getElementById(id).classList.remove('open'));
             document.getElementById('descGroup').style.display = 'block';
             isTransferMode = false;
+            document.getElementById('selectedStation').value = '';
             document.getElementById('stationSearch').value = '';
             document.getElementById('stationSearch').disabled = true;
             document.getElementById('citySelect').value = '';
             document.getElementById('arkPosition').value = '';
+            document.getElementById('cityColWrapper').style.display = 'block'; // Reset to default block
             ['qtyPET', 'qtyPP', 'qtyHDPE', 'qtyCan', 'qtyBat1', 'qtyBat3'].forEach(id => {
                 if (document.getElementById(id)) document.getElementById(id).value = '';
             });
@@ -1195,15 +1254,16 @@
                 document.getElementById('machineTypeGroup').classList.add('open');
                 document.getElementById('stationGroup').classList.add('open');
                 document.getElementById('stationLabel').innerHTML = '發生站點 <span class="required">*</span>';
+                document.getElementById('stationSearch').placeholder = '選擇城市後，輸入關鍵字搜尋站點';
+                onCityChange();
                 document.getElementById('datetimeGroup').classList.add('open');
                 issueDesc.placeholder = '請描述發生狀況，例如：投入瓶子後未計數、螢幕卡在掃碼畫面、投口未開啟等。';
                 document.getElementById('uploadDesc').innerText = '💡 提示：拍攝機台螢幕報錯畫面、或是錄影拍攝卡瓶狀況，能加快處理速度！';
             } else if (type === 'point') {
                 document.getElementById('pointSubProblemGroup').classList.add('open');
-                document.getElementById('stationGroup').classList.add('open');
-                document.getElementById('stationLabel').innerHTML = '發生站點 <span class="required">*</span>';
+                togglePointItems();
                 document.getElementById('datetimeGroup').classList.add('open');
-                issueDesc.placeholder = '請註明兌換的券名、扣除的點數數值、或是 APP 顯示的錯誤代碼。';
+                issueDesc.placeholder = '請註明兌換的商家名、扣除點數數值 或 APP顯示的錯誤代碼。 並以手機截圖或螢幕錄影方式說明';
             } else if (type === 'account') {
                 document.getElementById('accountTransferGroup').classList.add('open');
                 issueDesc.placeholder = '請描述您遇到的帳號問題...';
@@ -1240,6 +1300,25 @@
                 document.getElementById('batteryItems').style.display = (isBattery || isArk) ? 'flex' : 'none';
             } else {
                 group.classList.remove('open');
+            }
+        }
+
+        function togglePointItems() {
+            const isExchange = document.getElementById('subExchange') && document.getElementById('subExchange').checked;
+            const isApp = document.getElementById('subApp') && document.getElementById('subApp').checked;
+            const stationGroup = document.getElementById('stationGroup');
+            const cityCol = document.getElementById('cityColWrapper');
+
+            if (isExchange) {
+                stationGroup.classList.add('open');
+                document.getElementById('stationLabel').innerHTML = '發生商家 <span class="required">*</span>';
+                cityCol.style.display = 'none';
+                const s = document.getElementById('stationSearch');
+                s.disabled = false;
+                s.placeholder = '請填寫點數兌換的合作商家名稱';
+                document.getElementById('selectedStation').value = '';
+            } else if (isApp) {
+                stationGroup.classList.remove('open');
             }
         }
 
@@ -1296,11 +1375,17 @@
                             alert("請選擇方舟機台「特定位置」。"); return;
                         }
                     } else if (type === 'point') {
-                        if (!document.querySelector('input[name="pointSubProblem"]:checked')) { alert("請選擇「具體問題類型」。"); return; }
+                        const prob = document.querySelector('input[name="pointSubProblem"]:checked');
+                        if (!prob) { alert("請選擇「具體問題類型」。"); return; }
+                        if (prob.value === '點數兌換優惠' && !document.getElementById('stationSearch').value.trim()) {
+                            alert("請填寫「發生商家」名稱！"); return;
+                        }
                     }
 
+                    if (type === 'machine') {
+                        if (!document.getElementById('selectedStation').value || !document.getElementById('stationSearch').value.trim()) { alert("請選擇「城市」並從選單中挑選「發生站點」！"); return; }
+                    }
                     if (type === 'machine' || type === 'point') {
-                        if (!document.getElementById('citySelect').value || !document.getElementById('stationSearch').value.trim()) { alert("請選擇「城市」並填寫「發生站點名稱」！"); return; }
                         if (!document.getElementById('issueDateTime').value) { alert("請選擇「發生日期與時間」。"); return; }
                     }
                     if (!document.getElementById('issueDesc').value.trim()) { alert("請填寫「詳細說明」。"); return; }
@@ -1330,7 +1415,14 @@
             const userType = document.getElementById('issueType').value;
             const cityVal = document.getElementById('citySelect').value;
             const stationSearchText = document.getElementById('stationSearch').value.trim();
-            const station = cityVal && stationSearchText ? (cityVal + ' - ' + stationSearchText) : '';
+            const selectedStationHidden = document.getElementById('selectedStation').value;
+
+            let station = '';
+            if (userType === 'machine') {
+                station = cityVal && selectedStationHidden ? (cityVal + ' - ' + selectedStationHidden) : '';
+            } else if (userType === 'point') {
+                station = stationSearchText ? stationSearchText : '';
+            }
             const datetime = document.getElementById('issueDateTime') ? document.getElementById('issueDateTime').value : '';
             const phone = document.getElementById('userPhone').value;
             const name = document.getElementById('userName').value;
