@@ -1257,7 +1257,7 @@
                 document.getElementById('stationSearch').placeholder = '選擇城市後，輸入關鍵字搜尋站點';
                 onCityChange();
                 document.getElementById('datetimeGroup').classList.add('open');
-                issueDesc.placeholder = '請描述發生狀況，例如：投入瓶子後未計數、螢幕卡在掃碼畫面、投口未開啟等。';
+                issueDesc.placeholder = '請描述發生狀況，例如：投入瓶子後未計數、螢幕黑屏或當機、投口未開啟等。';
                 document.getElementById('uploadDesc').innerText = '💡 提示：拍攝機台螢幕報錯畫面、或是錄影拍攝卡瓶狀況，能加快處理速度！';
             } else if (type === 'point') {
                 document.getElementById('pointSubProblemGroup').classList.add('open');
@@ -1268,7 +1268,7 @@
                 document.getElementById('accountTransferGroup').classList.add('open');
                 issueDesc.placeholder = '請描述您遇到的帳號問題...';
             } else {
-                issueDesc.placeholder = '請詳細描述您遇到的狀況...';
+                issueDesc.placeholder = '請詳細描述建議內容。 如有合作需求 請直接於官網【聯絡我們】寄信至合作入口 ecoco.mkt@ecocogroup.com';
             }
         }
 
@@ -1312,7 +1312,7 @@
             if (isExchange) {
                 stationGroup.classList.add('open');
                 document.getElementById('stationLabel').innerHTML = '發生商家 <span class="required">*</span>';
-                cityCol.style.display = 'none';
+                cityCol.style.display = 'block';
                 const s = document.getElementById('stationSearch');
                 s.disabled = false;
                 s.placeholder = '請填寫點數兌換的合作商家名稱';
@@ -1377,8 +1377,10 @@
                     } else if (type === 'point') {
                         const prob = document.querySelector('input[name="pointSubProblem"]:checked');
                         if (!prob) { alert("請選擇「具體問題類型」。"); return; }
-                        if (prob.value === '點數兌換優惠' && !document.getElementById('stationSearch').value.trim()) {
-                            alert("請填寫「發生商家」名稱！"); return;
+                        if (prob.value === '點數兌換優惠') {
+                            if (!document.getElementById('citySelect').value || !document.getElementById('stationSearch').value.trim()) {
+                                alert("請選擇「城市」並填寫「發生商家」名稱！"); return;
+                            }
                         }
                     }
 
@@ -1421,7 +1423,7 @@
             if (userType === 'machine') {
                 station = cityVal && selectedStationHidden ? (cityVal + ' - ' + selectedStationHidden) : '';
             } else if (userType === 'point') {
-                station = stationSearchText ? stationSearchText : '';
+                station = cityVal && stationSearchText ? (cityVal + ' - ' + stationSearchText) : stationSearchText;
             }
             const datetime = document.getElementById('issueDateTime') ? document.getElementById('issueDateTime').value : '';
             const phone = document.getElementById('userPhone').value;
