@@ -1094,6 +1094,11 @@
             const city = document.getElementById('citySelect').value;
             const searchInput = document.getElementById('stationSearch');
             const hidden = document.getElementById('selectedStation');
+            const stationList = document.getElementById('stationList');
+            if (stationList) {
+                stationList.classList.remove('active');
+                stationList.innerHTML = '';
+            }
 
             if (document.getElementById('issueType').value === 'machine') {
                 searchInput.value = ''; hidden.value = '';
@@ -1116,6 +1121,8 @@
 
             searchInput.addEventListener('input', function () {
                 if (document.getElementById('issueType').value !== 'machine') {
+                    stationList.classList.remove('active');
+                    stationList.innerHTML = '';
                     hidden.value = this.value; // For point/exchange logic, simple free text pass-through
                     return;
                 }
@@ -1243,6 +1250,11 @@
             document.getElementById('citySelect').value = '';
             document.getElementById('arkPosition').value = '';
             document.getElementById('cityColWrapper').style.display = 'block'; // Reset to default block
+            const stationList = document.getElementById('stationList');
+            if (stationList) {
+                stationList.classList.remove('active');
+                stationList.innerHTML = '';
+            }
             ['qtyPET', 'qtyPP', 'qtyHDPE', 'qtyCan', 'qtyBat1', 'qtyBat3'].forEach(id => {
                 if (document.getElementById(id)) document.getElementById(id).value = '';
             });
