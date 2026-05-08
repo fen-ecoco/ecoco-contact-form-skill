@@ -58,15 +58,8 @@
         }
 
         @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .header {
@@ -82,10 +75,7 @@
         .header::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            top: 0; left: 0; right: 0; bottom: 0;
             background: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="100" r="50" fill="white" opacity="0.05"/></svg>') repeat;
             opacity: 0.5;
         }
@@ -109,8 +99,7 @@
 
         .ticket-badge {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 20px; right: 20px;
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(4px);
             padding: 6px 14px;
@@ -134,9 +123,7 @@
         .timeline::before {
             content: '';
             position: absolute;
-            top: 50%;
-            left: 80px;
-            right: 80px;
+            top: 50%; left: 80px; right: 80px;
             height: 3px;
             background: #f1f5f9;
             transform: translateY(-50%);
@@ -154,8 +141,7 @@
         }
 
         .step-circle {
-            width: 44px;
-            height: 44px;
+            width: 44px; height: 44px;
             border-radius: 50%;
             background: #f1f5f9;
             display: flex;
@@ -185,15 +171,8 @@
             transition: var(--transition);
         }
 
-        .step.active .step-label {
-            color: var(--brand-orange);
-            font-weight: 900;
-        }
-
-        .step.completed .step-label {
-            color: var(--brand-blue);
-            font-weight: 700;
-        }
+        .step.active .step-label { color: var(--brand-orange); font-weight: 900; }
+        .step.completed .step-label { color: var(--brand-blue); font-weight: 700; }
 
         .form-content {
             padding: 40px 50px;
@@ -208,15 +187,10 @@
             transform: translateX(20px);
         }
 
-        .step-panel.active {
-            display: block;
-        }
+        .step-panel.active { display: block; }
 
         @keyframes fadeInRight {
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            to { opacity: 1; transform: translateX(0); }
         }
 
         .section-title {
@@ -236,9 +210,7 @@
             line-height: 1.6;
         }
 
-        .form-group {
-            margin-bottom: 26px;
-        }
+        .form-group { margin-bottom: 26px; }
 
         .form-group label {
             display: flex;
@@ -249,11 +221,7 @@
             color: var(--text-main);
         }
 
-        .required {
-            color: var(--brand-orange);
-            margin-left: 4px;
-            font-weight: 900;
-        }
+        .required { color: var(--brand-orange); margin-left: 4px; font-weight: 900; }
 
         .form-control {
             width: 100%;
@@ -272,33 +240,25 @@
             box-shadow: 0 0 0 4px rgba(255, 80, 0, 0.1);
         }
 
-        .form-control::placeholder {
-            color: #94a3b8;
-            font-weight: 300;
-        }
+        .form-control::placeholder { color: #94a3b8; font-weight: 300; }
 
-        .email-wrapper {
-            position: relative;
-        }
+        .email-wrapper { position: relative; }
 
         .email-dropdown {
             position: absolute;
-            top: calc(100% - 20px);
-            left: 0;
+            top: calc(100% - 20px); left: 0;
             width: 100%;
             background: white;
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             z-index: 15;
             display: none;
             max-height: 200px;
             overflow-y: auto;
         }
 
-        .email-dropdown.active {
-            display: block;
-        }
+        .email-dropdown.active { display: block; }
 
         .email-item {
             padding: 12px 18px;
@@ -312,28 +272,23 @@
             font-weight: 700;
         }
 
-        .dropdown-wrapper {
-            position: relative;
-        }
+        .dropdown-wrapper { position: relative; }
 
         .dropdown-list {
             position: absolute;
-            top: calc(100% + 8px);
-            left: 0;
+            top: calc(100% + 8px); left: 0;
             width: 100%;
             background: white;
             border: 1px solid var(--border-color);
             border-radius: 8px;
             max-height: 250px;
             overflow-y: auto;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             z-index: 10;
             display: none;
         }
 
-        .dropdown-list.active {
-            display: block;
-        }
+        .dropdown-list.active { display: block; }
 
         .dropdown-item {
             padding: 14px 18px;
@@ -342,9 +297,7 @@
             border-bottom: 1px solid #f1f5f9;
         }
 
-        .dropdown-item:last-child {
-            border-bottom: none;
-        }
+        .dropdown-item:last-child { border-bottom: none; }
 
         .dropdown-item:hover {
             background: var(--primary-light);
@@ -362,15 +315,13 @@
             background: #f8fafc;
         }
 
-        .upload-area:hover,
-        .upload-area.dragover {
+        .upload-area:hover, .upload-area.dragover {
             border-color: var(--brand-blue);
             background: rgba(142, 184, 201, 0.15);
         }
 
         .upload-icon {
-            width: 64px;
-            height: 64px;
+            width: 64px; height: 64px;
             background: white;
             border-radius: 50%;
             display: flex;
@@ -399,23 +350,19 @@
             border: 1px solid var(--border-color);
         }
 
-        .preview-item img,
-        .preview-item video {
-            width: 100%;
-            height: 100%;
+        .preview-item img, .preview-item video {
+            width: 100%; height: 100%;
             object-fit: cover;
         }
 
         .remove-btn {
             position: absolute;
-            top: 6px;
-            right: 6px;
+            top: 6px; right: 6px;
             background: rgba(6, 14, 159, 0.7);
             color: white;
             border: none;
             border-radius: 50%;
-            width: 26px;
-            height: 26px;
+            width: 26px; height: 26px;
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -425,10 +372,7 @@
             z-index: 10;
         }
 
-        .remove-btn:hover {
-            background: var(--brand-orange);
-            transform: scale(1.1);
-        }
+        .remove-btn:hover { background: var(--brand-orange); transform: scale(1.1); }
 
         .form-footer {
             padding: 24px 50px;
@@ -458,9 +402,7 @@
             color: var(--brand-blue);
         }
 
-        .btn-outline:hover {
-            background: rgba(6, 14, 159, 0.05);
-        }
+        .btn-outline:hover { background: rgba(6, 14, 159, 0.05); }
 
         .btn-primary {
             background: var(--brand-orange);
@@ -484,13 +426,10 @@
             animation: zoomIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .success-screen.active {
-            display: block;
-        }
+        .success-screen.active { display: block; }
 
         .success-icon {
-            width: 90px;
-            height: 90px;
+            width: 90px; height: 90px;
             background: linear-gradient(135deg, var(--brand-orange) 0%, #ff7333 100%);
             border-radius: 50%;
             display: flex;
@@ -588,7 +527,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* 帳號轉換通知 */
         .transfer-notice {
             background: linear-gradient(135deg, rgba(6, 14, 159, 0.03) 0%, rgba(255, 80, 0, 0.03) 100%);
             border: 1px solid var(--border-color);
@@ -630,13 +568,9 @@
             border-left: 4px solid var(--brand-orange);
         }
 
-        .transfer-notice .warning-box .phase-title {
-            color: var(--brand-orange);
-        }
+        .transfer-notice .warning-box .phase-title { color: var(--brand-orange); }
 
-        .slide-down {
-            display: none;
-        }
+        .slide-down { display: none; }
 
         .slide-down.open {
             display: block;
@@ -645,30 +579,15 @@
         }
 
         @keyframes slideInFade {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .radio-group {
-            display: flex;
-            gap: 16px;
-            margin-top: 8px;
-        }
+        .radio-group { display: flex; gap: 16px; margin-top: 8px; }
 
-        .radio-card {
-            flex: 1;
-        }
+        .radio-card { flex: 1; }
 
-        .radio-card input[type="radio"] {
-            display: none;
-        }
+        .radio-card input[type="radio"] { display: none; }
 
         .radio-card label {
             display: flex;
@@ -684,32 +603,17 @@
             background: #f8fafc;
         }
 
-        .radio-card input[type="radio"]:checked+label {
+        .radio-card input[type="radio"]:checked + label {
             border-color: var(--brand-orange);
             background: var(--primary-light);
             color: var(--brand-orange);
             box-shadow: 0 0 0 4px rgba(255, 80, 0, 0.1);
         }
 
-        /* 站點兩欄 */
-        .station-row {
-            display: flex;
-            gap: 12px;
-        }
-
-        .station-row .city-col {
-            flex: 0 0 140px;
-        }
-
-        .station-row .name-col {
-            flex: 1;
-        }
-
-        .station-loading {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-top: 8px;
-        }
+        .station-row { display: flex; gap: 12px; }
+        .station-row .city-col { flex: 0 0 140px; }
+        .station-row .name-col { flex: 1; }
+        .station-loading { color: var(--text-muted); font-size: 0.9rem; margin-top: 8px; }
     </style>
 </head>
 
@@ -741,10 +645,8 @@
                 <p class="section-desc">若您從 APP 進入，系統已自動帶入您的手機號；若是從官網進入表單，請自行填入。</p>
                 <div class="form-group">
                     <label>手機號碼 (綁定帳號) <span class="required">*</span></label>
-                    <input type="text" class="form-control" id="userPhone" placeholder="請輸入 09 開頭的 10 碼手機號碼"
-                        maxlength="10">
-                    <small
-                        style="color: var(--text-muted); margin-top: 6px; display: block;">此手機號碼將作為查詢與核對帳戶的依據。</small>
+                    <input type="text" class="form-control" id="userPhone" placeholder="請輸入 09 開頭的 10 碼手機號碼" maxlength="10">
+                    <small style="color: var(--text-muted); margin-top: 6px; display: block;">此手機號碼將作為查詢與核對帳戶的依據。</small>
                 </div>
                 <div class="form-group email-wrapper">
                     <label>聯絡信箱 <span class="required">*</span></label>
@@ -778,67 +680,45 @@
                     <div class="form-group">
                         <label>是否有轉換帳號需求？ <span class="required">*</span></label>
                         <div class="radio-group">
-                            <div class="radio-card"><input type="radio" name="needTransfer" id="transferYes" value="yes"
-                                    onchange="toggleTransferFields()"><label for="transferYes">✅ 是，我需要轉換帳號</label></div>
-                            <div class="radio-card"><input type="radio" name="needTransfer" id="transferNo" value="no"
-                                    onchange="toggleTransferFields()"><label for="transferNo">❌ 否，是其他問題</label></div>
+                            <div class="radio-card"><input type="radio" name="needTransfer" id="transferYes" value="yes" onchange="toggleTransferFields()"><label for="transferYes">✅ 是，我需要轉換帳號</label></div>
+                            <div class="radio-card"><input type="radio" name="needTransfer" id="transferNo" value="no" onchange="toggleTransferFields()"><label for="transferNo">❌ 否，是其他問題</label></div>
                         </div>
                     </div>
                 </div>
 
                 <!-- 帳號：第三層 轉換表單 -->
                 <div class="slide-down" id="transferFormGroup">
-                    <div class="form-group"><label>原帳號 (原手機門號) <span class="required">*</span></label><input type="text"
-                            class="form-control" id="oldAccount" placeholder="請輸入原手機門號 (09開頭10碼)" maxlength="10"></div>
-                    <div class="form-group"><label>原會員姓名 <span class="required">*</span></label><input type="text"
-                            class="form-control" id="oldName" placeholder="請輸入原會員姓名"></div>
-                    <div class="form-group"><label>原電子郵件信箱 <span class="required">*</span></label><input type="email"
-                            class="form-control" id="oldEmail" placeholder="請輸入原帳號綁定的信箱"></div>
-                    <div class="form-group"><label>轉換原因 <span class="required">*</span></label><textarea
-                            class="form-control" rows="3" id="transferReason" placeholder="例如：門號已停用、更換電信業者等"></textarea>
-                    </div>
-                    <div class="form-group"><label>新帳號 (新手機門號) <span class="required">*</span></label><input type="text"
-                            class="form-control" id="newAccount" placeholder="請輸入要移轉到的新手機門號 (09開頭10碼)" maxlength="10">
-                    </div>
-                    <div class="form-group"><label>客服服務時間內可電話聯繫的時段 <span class="required">*</span></label><input
-                            type="datetime-local" class="form-control" id="contactTime"><small
-                            style="color: var(--text-muted); margin-top: 6px; display: block;">週一至週五 09:00–12:30 /
-                            13:30–17:30，請選擇您方便的時段。</small></div>
+                    <div class="form-group"><label>原帳號 (原手機門號) <span class="required">*</span></label><input type="text" class="form-control" id="oldAccount" placeholder="請輸入原手機門號 (09開頭10碼)" maxlength="10"></div>
+                    <div class="form-group"><label>原會員姓名 <span class="required">*</span></label><input type="text" class="form-control" id="oldName" placeholder="請輸入原會員姓名"></div>
+                    <div class="form-group"><label>原電子郵件信箱 <span class="required">*</span></label><input type="email" class="form-control" id="oldEmail" placeholder="請輸入原帳號綁定的信箱"></div>
+                    <div class="form-group"><label>轉換原因 <span class="required">*</span></label><textarea class="form-control" rows="3" id="transferReason" placeholder="例如：門號已停用、更換電信業者等"></textarea></div>
+                    <div class="form-group"><label>新帳號 (新手機門號) <span class="required">*</span></label><input type="text" class="form-control" id="newAccount" placeholder="請輸入要移轉到的新手機門號 (09開頭10碼)" maxlength="10"></div>
+                    <div class="form-group"><label>客服服務時間內可電話聯繫的時段 <span class="required">*</span></label><input type="datetime-local" class="form-control" id="contactTime"><small style="color: var(--text-muted); margin-top: 6px; display: block;">週一至週五 09:00–12:30 / 13:30–17:30，請選擇您方便的時段。</small></div>
                     <div class="transfer-notice">
                         <h4>📋 【重要通知：帳號移轉作業流程】</h4>
                         <p style="margin-bottom: 16px;">為保障您的個資安全與點數權益，ECOCO 將於收到回信後，由專人與您聯繫核對資料。</p>
                         <div class="phase">
-                            <div class="phase-title">📞 第一階段：資料核對</div><strong>聯繫時間：</strong>週一至週五 09:00–12:30 /
-                            13:30–17:30 (不含國定例假日)。<br><strong>聯繫方式：</strong>我們將致電與您核對會員資料，請留意「<span
-                                style="color: var(--brand-orange); font-weight: 900;">070</span>」開頭之來電。
+                            <div class="phase-title">📞 第一階段：資料核對</div><strong>聯繫時間：</strong>週一至週五 09:00–12:30 / 13:30–17:30 (不含國定例假日)。<br><strong>聯繫方式：</strong>我們將致電與您核對會員資料，請留意「<span style="color: var(--brand-orange); font-weight: 900;">070</span>」開頭之來電。
                         </div>
                         <div class="phase">
-                            <div class="phase-title">⚙️ 第二階段：移轉作業</div><strong>作業時間：</strong>核對無誤後，將於 <strong>1-3
-                                個工作天</strong>內完成移轉。<br><strong>帳號失效：</strong>移轉成功後，原帳號將<span
-                                style="color: var(--brand-orange); font-weight: 900;">立即失效</span>，屆時將無法登入、查詢或使用，敬請悉知。
+                            <div class="phase-title">⚙️ 第二階段：移轉作業</div><strong>作業時間：</strong>核對無誤後，將於 <strong>1-3 個工作天</strong>內完成移轉。<br><strong>帳號失效：</strong>移轉成功後，原帳號將<span style="color: var(--brand-orange); font-weight: 900;">立即失效</span>，屆時將無法登入、查詢或使用，敬請悉知。
                         </div>
                         <div class="warning-box">
                             <div class="phase-title">⚠️ 特別注意事項（請務必配合）</div>
                             <strong>請勿自行註冊新帳號：</strong>移轉期間，請勿先使用新門號重複註冊。<br><br><strong>主動告知現況：</strong>若您已註冊新帳號，請於回信時務必註明：
-                            <div style="margin: 8px 0 0 16px;">① 新帳號已註冊，<strong>尚未開始使用</strong>。<br>②
-                                新帳號已註冊，且<strong>已開始投遞/兌換</strong>。</div>
+                            <div style="margin: 8px 0 0 16px;">① 新帳號已註冊，<strong>尚未開始使用</strong>。<br>② 新帳號已註冊，且<strong>已開始投遞/兌換</strong>。</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- 機台：第一層 具體問題類型 (僅機台操作/故障回報顯示) -->
+                <!-- 機台：具體問題類型 -->
                 <div class="slide-down" id="machineSubProblemGroup" style="margin-bottom: 26px;">
                     <div class="form-group">
                         <label>具體問題類型 <span class="required">*</span></label>
                         <div class="radio-group" style="margin-bottom: 8px;">
-                            <div class="radio-card"><input type="radio" name="machineSubProblem" id="subPoint"
-                                    value="點數未入帳" onchange="toggleItems()"><label for="subPoint">🪙 點數未入帳</label></div>
-                            <div class="radio-card"><input type="radio" name="machineSubProblem" id="subPointRepeat"
-                                    value="點數重複入點" onchange="toggleItems()"><label for="subPointRepeat">🪙
-                                    點數重複入點</label></div>
-                            <div class="radio-card"><input type="radio" name="machineSubProblem" id="subMachine"
-                                    value="機台操作異常" onchange="toggleItems()"><label for="subMachine">⚙️ 機台操作異常</label>
-                            </div>
+                            <div class="radio-card"><input type="radio" name="machineSubProblem" id="subPoint" value="點數未入帳" onchange="toggleItems()"><label for="subPoint">🪙 點數未入帳</label></div>
+                            <div class="radio-card"><input type="radio" name="machineSubProblem" id="subPointRepeat" value="點數重複入點" onchange="toggleItems()"><label for="subPointRepeat">🪙 點數重複入點</label></div>
+                            <div class="radio-card"><input type="radio" name="machineSubProblem" id="subMachine" value="機台操作異常" onchange="toggleItems()"><label for="subMachine">⚙️ 機台操作異常</label></div>
                         </div>
                     </div>
                 </div>
@@ -847,12 +727,8 @@
                     <div class="form-group">
                         <label>具體問題類型 <span class="required">*</span></label>
                         <div class="radio-group" style="margin-bottom: 8px;">
-                            <div class="radio-card"><input type="radio" name="pointSubProblem" id="subExchange"
-                                    value="點數兌換優惠" onchange="togglePointItems()"><label for="subExchange">🏪
-                                    點數兌換優惠</label></div>
-                            <div class="radio-card"><input type="radio" name="pointSubProblem" id="subApp"
-                                    value="APP使用異常" onchange="togglePointItems()"><label for="subApp">📱 APP使用異常</label>
-                            </div>
+                            <div class="radio-card"><input type="radio" name="pointSubProblem" id="subExchange" value="點數兌換優惠" onchange="togglePointItems()"><label for="subExchange">🏪 點數兌換優惠</label></div>
+                            <div class="radio-card"><input type="radio" name="pointSubProblem" id="subApp" value="APP使用異常" onchange="togglePointItems()"><label for="subApp">📱 APP使用異常</label></div>
                         </div>
                     </div>
                 </div>
@@ -861,17 +737,13 @@
                     <div class="form-group">
                         <label>機台類型 <span class="required">*</span></label>
                         <div class="radio-group" style="flex-wrap: wrap; margin-bottom: 10px;">
-                            <div class="radio-card"><input type="radio" name="machineType" id="typeBottle" value="收瓶機"
-                                    onchange="toggleArk()"><label for="typeBottle">收瓶機</label></div>
-                            <div class="radio-card"><input type="radio" name="machineType" id="typeBattery" value="電池機"
-                                    onchange="toggleArk()"><label for="typeBattery">電池機</label></div>
-                            <div class="radio-card"><input type="radio" name="machineType" id="typeArk" value="方舟"
-                                    onchange="toggleArk()"><label for="typeArk">方舟</label></div>
+                            <div class="radio-card"><input type="radio" name="machineType" id="typeBottle" value="收瓶機" onchange="toggleArk()"><label for="typeBottle">收瓶機</label></div>
+                            <div class="radio-card"><input type="radio" name="machineType" id="typeBattery" value="電池機" onchange="toggleArk()"><label for="typeBattery">電池機</label></div>
+                            <div class="radio-card"><input type="radio" name="machineType" id="typeArk" value="方舟" onchange="toggleArk()"><label for="typeArk">方舟</label></div>
                         </div>
                     </div>
 
-                    <div class="slide-down" id="arkPositionGroup"
-                        style="background: #f8fafc; padding: 15px; border-radius: 8px; border: 1px dashed var(--brand-light-blue); margin-bottom: 15px;">
+                    <div class="slide-down" id="arkPositionGroup" style="background: #f8fafc; padding: 15px; border-radius: 8px; border: 1px dashed var(--brand-light-blue); margin-bottom: 15px;">
                         <label style="margin-bottom: 8px;">方舟特定位置 <span class="required">*</span></label>
                         <select class="form-control" id="arkPosition">
                             <option value="">請選擇方舟機台位置</option>
@@ -882,48 +754,28 @@
                         </select>
                     </div>
 
-                    <div class="slide-down" id="missingItemsGroup"
-                        style="background: #fffcf8; padding: 15px; border-radius: 8px; border: 1px solid var(--brand-orange); margin-bottom: 15px;">
+                    <div class="slide-down" id="missingItemsGroup" style="background: #fffcf8; padding: 15px; border-radius: 8px; border: 1px solid var(--brand-orange); margin-bottom: 15px;">
                         <label style="margin-bottom: 8px; color: var(--brand-orange);">未計數的品項與數量</label>
-                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 12px;">請填寫未分配到點數的單類別數量
-                            (若無請留空)：</p>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 12px;">請填寫未分配到點數的單類別數量 (若無請留空)：</p>
 
                         <div id="bottleItems" style="display: none; flex-wrap: wrap; gap: 12px; margin-bottom: 12px;">
-                            <div
-                                style="flex: 1 1 45%; display: flex; align-items: center; justify-content: space-between;">
-                                <label style="margin:0; font-weight: 500;">PET寶特瓶</label><input type="number"
-                                    id="qtyPET" min="0" class="form-control"
-                                    style="width: 80px; padding: 8px; text-align: center;" placeholder="0">
+                            <div style="flex: 1 1 45%; display: flex; align-items: center; justify-content: space-between;">
+                                <label style="margin:0; font-weight: 500;">PET寶特瓶</label><input type="number" id="qtyPET" min="0" class="form-control" style="width: 80px; padding: 8px; text-align: center;" placeholder="0">
                             </div>
-                            <div
-                                style="flex: 1 1 45%; display: flex; align-items: center; justify-content: space-between;">
-                                <label style="margin:0; font-weight: 500;">PP塑膠杯</label><input type="number" id="qtyPP"
-                                    min="0" class="form-control" style="width: 80px; padding: 8px; text-align: center;"
-                                    placeholder="0">
+                            <div style="flex: 1 1 45%; display: flex; align-items: center; justify-content: space-between;">
+                                <label style="margin:0; font-weight: 500;">PP塑膠杯</label><input type="number" id="qtyPP" min="0" class="form-control" style="width: 80px; padding: 8px; text-align: center;" placeholder="0">
                             </div>
-                            <div
-                                style="flex: 1 1 45%; display: flex; align-items: center; justify-content: space-between;">
-                                <label style="margin:0; font-weight: 500;">HDPE牛奶瓶</label><input type="number"
-                                    id="qtyHDPE" min="0" class="form-control"
-                                    style="width: 80px; padding: 8px; text-align: center;" placeholder="0">
+                            <div style="flex: 1 1 45%; display: flex; align-items: center; justify-content: space-between;">
+                                <label style="margin:0; font-weight: 500;">HDPE牛奶瓶</label><input type="number" id="qtyHDPE" min="0" class="form-control" style="width: 80px; padding: 8px; text-align: center;" placeholder="0">
                             </div>
-                            <div
-                                style="flex: 1 1 45%; display: flex; align-items: center; justify-content: space-between;">
-                                <label style="margin:0; font-weight: 500;">鋁罐</label><input type="number" id="qtyCan"
-                                    min="0" class="form-control" style="width: 80px; padding: 8px; text-align: center;"
-                                    placeholder="0">
+                            <div style="flex: 1 1 45%; display: flex; align-items: center; justify-content: space-between;">
+                                <label style="margin:0; font-weight: 500;">鋁罐</label><input type="number" id="qtyCan" min="0" class="form-control" style="width: 80px; padding: 8px; text-align: center;" placeholder="0">
                             </div>
                         </div>
 
                         <div id="batteryItems" style="display: none; flex-direction: column; gap: 12px;">
-                            <div style="display: flex; align-items: center; justify-content: space-between;"><label
-                                    style="margin:0; font-weight: 500;">1-2號與9V電池</label><input type="number"
-                                    id="qtyBat1" min="0" class="form-control"
-                                    style="width: 80px; padding: 8px; text-align: center;" placeholder="0"></div>
-                            <div style="display: flex; align-items: center; justify-content: space-between;"><label
-                                    style="margin:0; font-weight: 500;">3-6號電池</label><input type="number" id="qtyBat3"
-                                    min="0" class="form-control" style="width: 80px; padding: 8px; text-align: center;"
-                                    placeholder="0"></div>
+                            <div style="display: flex; align-items: center; justify-content: space-between;"><label style="margin:0; font-weight: 500;">1-2號與9V電池</label><input type="number" id="qtyBat1" min="0" class="form-control" style="width: 80px; padding: 8px; text-align: center;" placeholder="0"></div>
+                            <div style="display: flex; align-items: center; justify-content: space-between;"><label style="margin:0; font-weight: 500;">3-6號電池</label><input type="number" id="qtyBat3" min="0" class="form-control" style="width: 80px; padding: 8px; text-align: center;" placeholder="0"></div>
                         </div>
                     </div>
                 </div>
@@ -939,8 +791,7 @@
                                 </select>
                             </div>
                             <div class="name-col dropdown-wrapper" id="stationColWrapper">
-                                <input type="text" class="form-control" id="stationSearch" placeholder="選擇城市後，請直接填寫"
-                                    disabled>
+                                <input type="text" class="form-control" id="stationSearch" placeholder="選擇城市後，請直接填寫" disabled>
                                 <div class="dropdown-list" id="stationList"></div>
                             </div>
                         </div>
@@ -951,8 +802,7 @@
 
                 <!-- 發生日期與時間 -->
                 <div class="slide-down" id="datetimeGroup">
-                    <div class="form-group"><label>發生日期與時間 <span class="required">*</span></label><input
-                            type="datetime-local" class="form-control" id="issueDateTime"></div>
+                    <div class="form-group"><label>發生日期與時間 <span class="required">*</span></label><input type="datetime-local" class="form-control" id="issueDateTime"></div>
                 </div>
 
                 <!-- 詳細說明 -->
@@ -971,10 +821,8 @@
                     <p style="font-size: 1.1rem; color: var(--text-main); margin-bottom: 8px;">
                         <strong>點擊並選擇檔案</strong>，或將檔案拖曳至此
                     </p>
-                    <p style="font-size: 0.9rem; color: var(--brand-blue);">圖片最多 3 張，影片最多 1 個<br>限制 5MB，支援
-                        JPG/PNG/MP4/MOV</p>
-                    <input type="file" id="fileInput" multiple
-                        accept="image/png, image/jpeg, video/mp4, video/quicktime" style="display: none;">
+                    <p style="font-size: 0.9rem; color: var(--brand-blue);">圖片最多 3 張，影片最多 1 個<br>限制 5MB，支援 JPG/PNG/MP4/MOV</p>
+                    <input type="file" id="fileInput" multiple accept="image/png, image/jpeg, video/mp4, video/quicktime" style="display: none;">
                 </div>
                 <div class="preview-grid" id="previewGrid"></div>
             </div>
@@ -984,39 +832,29 @@
                 <div id="success-faq" style="display: none;">
                     <div class="success-icon blue-variant">💡</div>
                     <h2 style="color: var(--brand-blue);">這題有答案囉！</h2>
-                    <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 24px;">系統判斷您的疑問已在 ECOCO
-                        官網有完整解答：</p>
+                    <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 24px;">系統判斷您的疑問已在 ECOCO 官網有完整解答：</p>
                     <div class="success-msg blue-variant">
-                        <h4 style="margin-bottom: 12px; color: var(--brand-blue); font-size: 1.2rem;">👉 智能解答分析結果：<span
-                                id="faq-title-display" style="color: var(--brand-orange);"></span></h4>
-                        <div class="faq-path-box">📍 解答路徑：<strong id="faq-path-display"
-                                style="color: var(--text-main);"></strong></div>
+                        <h4 style="margin-bottom: 12px; color: var(--brand-blue); font-size: 1.2rem;">👉 智能解答分析結果：<span id="faq-title-display" style="color: var(--brand-orange);"></span></h4>
+                        <div class="faq-path-box">📍 解答路徑：<strong id="faq-path-display" style="color: var(--text-main);"></strong></div>
                         請直接點擊下方按鈕前往查看確切的解決步驟。<br>
-                        <span
-                            style="color: var(--brand-orange); font-weight: 700; background: #fff; padding: 4px 8px; border-radius: 4px; display: inline-block; margin-top: 10px; border: 1px solid #ffd4c2;">※
-                            此回報不會另行寄送信件。</span>
+                        <span style="color: var(--brand-orange); font-weight: 700; background: #fff; padding: 4px 8px; border-radius: 4px; display: inline-block; margin-top: 10px; border: 1px solid #ffd4c2;">※ 此回報不會另行寄送信件。</span>
                         <a href="#" id="faq-link-a" target="_blank" class="faq-link-btn">前往官網查看詳細解答</a>
                     </div>
                 </div>
                 <div id="success-normal" style="display: none;">
                     <div class="success-icon">✓</div>
                     <h2 style="color: var(--brand-orange);">表單成功送出！</h2>
-                    <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 10px;">感謝您的回報，ECOCO
-                        團隊將會盡速由專人為您處理。</p>
+                    <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 10px;">感謝您的回報，ECOCO 團隊將會盡速由專人為您處理。</p>
                     <div class="ticket-box" id="finalTicket">TK-...</div>
                     <div class="success-msg">
-                        <strong>✉️ 處理進度將主動回報至：<br><span id="displaySentEmail"
-                                style="color: var(--brand-blue); font-size: 1.15rem;"></span></strong><br><br>
+                        <strong>✉️ 處理進度將主動回報至：<br><span id="displaySentEmail" style="color: var(--brand-blue); font-size: 1.15rem;"></span></strong><br><br>
                         目前 APP 內無法追蹤客服進度，我們會將所有的處理狀況與結果，**直接寄發到您的電子郵件信箱**。<br>
                         請您留意信件匣的通知，謝謝您與 ECOCO 一同推動循環經濟 🌍！
-                        <div
-                            style="margin-top: 16px; padding-top: 16px; border-top: 1px dashed rgba(0,0,0,0.1); color: var(--brand-orange); font-weight: 700; font-size: 0.95rem;">
+                        <div style="margin-top: 16px; padding-top: 16px; border-top: 1px dashed rgba(0,0,0,0.1); color: var(--brand-orange); font-weight: 700; font-size: 0.95rem;">
                             ⚠️ 貼心提醒：相同問題內容請勿重複填寫送出表單，以免延誤案件總體處理進度。</div>
                     </div>
                 </div>
-                <button class="btn btn-outline"
-                    style="margin-top: 30px; width: 100%; border: none; text-decoration: underline;"
-                    onclick="location.reload()">我要填寫其他回報表單</button>
+                <button class="btn btn-outline" style="margin-top: 30px; width: 100%; border: none; text-decoration: underline;" onclick="location.reload()">我要填寫其他回報表單</button>
             </div>
         </div>
         <div class="form-footer" id="formFooter">
@@ -1028,11 +866,11 @@
 
     <script>
         // ============================================================
-        // 1. 站點資料管理：從 API 載入、城市分組
+        // 1. 站點資料管理
         // ============================================================
-        let allStations = [];       // [{name, address, city, code}]
-        let cityList = [];           // 去重後的城市清單
-        let filteredStations = [];   // 當前城市篩選後的站點
+        let allStations = [];
+        let cityList = [];
+        let filteredStations = [];
 
         const cityDisplayMap = {
             '臺北市': '台北', '台北市': '台北', '新北市': '新北', '桃園市': '桃園',
@@ -1058,7 +896,6 @@
                         const rawCity = extractCity(s.address);
                         return { name: s.name, address: s.address, city: rawCity, displayCity: cityDisplayMap[rawCity] || rawCity, code: s.code || '' };
                     });
-                    // 建立城市清單並照台灣由北到南排序
                     const northToSouthOrder = [
                         '基隆', '台北', '新北', '桃園', '新竹市', '新竹縣', '苗栗',
                         '台中', '彰化', '南投', '雲林', '嘉義市', '嘉義縣',
@@ -1068,13 +905,10 @@
                     ];
                     cityList = [...new Set(allStations.map(s => s.displayCity))].filter(c => c !== '其他');
                     cityList.sort((a, b) => {
-                        let iA = northToSouthOrder.indexOf(a);
-                        let iB = northToSouthOrder.indexOf(b);
-                        iA = iA === -1 ? 99 : iA;
-                        iB = iB === -1 ? 99 : iB;
+                        let iA = northToSouthOrder.indexOf(a), iB = northToSouthOrder.indexOf(b);
+                        iA = iA === -1 ? 99 : iA; iB = iB === -1 ? 99 : iB;
                         return iA - iB;
                     });
-
                     const citySelect = document.getElementById('citySelect');
                     cityList.forEach(c => {
                         const opt = document.createElement('option');
@@ -1095,10 +929,7 @@
             const searchInput = document.getElementById('stationSearch');
             const hidden = document.getElementById('selectedStation');
             const stationList = document.getElementById('stationList');
-            if (stationList) {
-                stationList.classList.remove('active');
-                stationList.innerHTML = '';
-            }
+            if (stationList) { stationList.classList.remove('active'); stationList.innerHTML = ''; }
 
             if (document.getElementById('issueType').value === 'machine') {
                 searchInput.value = ''; hidden.value = '';
@@ -1114,92 +945,19 @@
             }
         }
 
-        function setupSearchDropdown() {
-            const searchInput = document.getElementById('stationSearch');
-            const stationList = document.getElementById('stationList');
-            const hidden = document.getElementById('selectedStation');
-
-            searchInput.addEventListener('input', function () {
-                if (document.getElementById('issueType').value !== 'machine') {
-                    stationList.classList.remove('active');
-                    stationList.innerHTML = '';
-                    hidden.value = this.value; // For point/exchange logic, simple free text pass-through
-                    return;
-                }
-                const kw = this.value.trim().toLowerCase();
-                stationList.innerHTML = '';
-                if (!kw) { stationList.classList.remove('active'); return; }
-                const matched = filteredStations.filter(s => s.name.toLowerCase().includes(kw) || s.address.toLowerCase().includes(kw));
-                if (matched.length > 0) {
-                    matched.forEach(s => {
-                        let item = document.createElement('div'); item.className = 'dropdown-item';
-                        item.innerHTML = `<strong>${s.name}</strong><br><small style="color:#94a3b8;">${s.address}</small>`;
-                        item.onclick = function () {
-                            searchInput.value = s.name; hidden.value = s.name;
-                            stationList.classList.remove('active');
-                        };
-                        stationList.appendChild(item);
-                    });
-                    stationList.classList.add('active');
-                } else {
-                    stationList.classList.remove('active');
-                }
-            });
-
-            document.addEventListener('click', function (e) {
-                if (!e.target.closest('#stationColWrapper')) { if (stationList) stationList.classList.remove('active'); }
-            });
-        }
-
         // ============================================================
-        // 2. FAQ 智能比對（精準版：使用更長關鍵詞 + 排除短關鍵字誤觸）
+        // 2. FAQ 智能比對
         // ============================================================
         const faqDatabase = [
-            {
-                keywords: ['怎麼註冊', '如何註冊', '註冊教學', '要註冊', '申請會員', '加入會員', '變會員'],
-                url: 'https://www.ecocogroup.com/qa/', title: '如何註冊ECOCO會員？',
-                path: '官網 / 常見問題 / 註冊下載問題 / 如何註冊ECOCO會員？'
-            },
-            {
-                keywords: ['收不到驗證碼', '驗證碼沒來', '沒收到驗證碼', '簡訊驗證碼', '沒有驗證碼', '傳不出驗證碼'],
-                url: 'https://www.ecocogroup.com/qa/', title: '為何收不到手機驗證碼簡訊？',
-                path: '官網 / 常見問題 / 註冊下載問題 / 為何收不到手機驗證碼簡訊？'
-            },
-            {
-                keywords: ['忘記密碼', '密碼忘記', '修改密碼', '更改密碼', '密碼錯誤', '被鎖住', '無法登入'],
-                url: 'https://www.ecocogroup.com/qa/', title: '如何修改密碼',
-                path: '官網 / 常見問題 / 帳號設定問題 / 如何修改密碼'
-            },
-            {
-                keywords: ['門號停用', '換新號', '換門號', '換手機號碼', '號碼換了', '舊號碼', '手機號碼停用'],
-                url: 'https://www.ecocogroup.com/qa/', title: '手機號碼停用，如何申請轉換帳號呢？',
-                path: '官網 / 常見問題 / 帳號設定問題 / 手機號碼停用，如何申請轉換帳號呢？'
-            },
-            {
-                keywords: ['哪裡有站點', '站點在哪', '查詢站點', '怎麼找機台', '附近有機台', '回收什麼', '可以投什麼', '能投哪些', '回收品項', '回收項目', '機台位置', '去哪裡投', '站點位置'],
-                url: 'https://www.ecocogroup.com/qa/', title: '如何查詢ECOCO站點與回收品項?',
-                path: '官網 / 常見問題 / 使用設備相關 / 如何查詢ECOCO站點與回收品項?'
-            },
-            {
-                keywords: ['一直被退瓶', '退出來', '不吃瓶子', '被退回', '不能投瓶子', '退回', '投不進', '一直退出', '無法投瓶'],
-                url: 'https://www.ecocogroup.com/qa/', title: '投瓶時，為什麼一直被機台退瓶？',
-                path: '官網 / 常見問題 / 使用設備相關 / 投瓶時，為什麼一直被機台退瓶？'
-            },
-            {
-                keywords: ['黑屏', '黑掉', '螢幕壞掉', '螢幕沒顯示', '機台滿了', '滿袋', '袋子滿了', '中斷'],
-                url: 'https://www.ecocogroup.com/qa/', title: '投瓶到一半，機台螢幕出現黑屏或機台滿袋，我的點數是否會不見呢？',
-                path: '官網 / 常見問題 / 使用設備相關 / 投瓶到一半，機台螢幕出現黑屏或機台滿袋，我的點數是否會不見呢？'
-            },
-            {
-                keywords: ['點數沒收到', '點數沒入帳', '點數沒有進', '沒獲得點數', '沒有點數', '沒點數', '點數不見', '漏給點數', '沒加到分', '沒給點數'],
-                url: 'https://www.ecocogroup.com/qa/', title: '為何沒有獲得回饋點數？',
-                path: '官網 / 常見問題 / 點數相關 / 為何沒收到點數？'
-            },
-            {
-                keywords: ['設置站點', '增設站點', '新增站點', '設立站點', '我要設站', '想要機台', '可以來裝'],
-                url: 'https://www.ecocogroup.com/qa/', title: '如何申請成為ECOCO環保站點？',
-                path: '官網 / 常見問題 / 其他建議與合作相關 / 如何申請成為ECOCO環保站點？'
-            }
+            { keywords: ['怎麼註冊', '如何註冊', '註冊教學', '要註冊', '申請會員', '加入會員', '變會員'], url: 'https://www.ecocogroup.com/qa/', title: '如何註冊ECOCO會員？', path: '官網 / 常見問題 / 註冊下載問題 / 如何註冊ECOCO會員？' },
+            { keywords: ['收不到驗證碼', '驗證碼沒來', '沒收到驗證碼', '簡訊驗證碼', '沒有驗證碼', '傳不出驗證碼'], url: 'https://www.ecocogroup.com/qa/', title: '為何收不到手機驗證碼簡訊？', path: '官網 / 常見問題 / 註冊下載問題 / 為何收不到手機驗證碼簡訊？' },
+            { keywords: ['忘記密碼', '密碼忘記', '修改密碼', '更改密碼', '密碼錯誤', '被鎖住', '無法登入'], url: 'https://www.ecocogroup.com/qa/', title: '如何修改密碼', path: '官網 / 常見問題 / 帳號設定問題 / 如何修改密碼' },
+            { keywords: ['門號停用', '換新號', '換門號', '換手機號碼', '號碼換了', '舊號碼', '手機號碼停用'], url: 'https://www.ecocogroup.com/qa/', title: '手機號碼停用，如何申請轉換帳號呢？', path: '官網 / 常見問題 / 帳號設定問題 / 手機號碼停用，如何申請轉換帳號呢？' },
+            { keywords: ['哪裡有站點', '站點在哪', '查詢站點', '怎麼找機台', '附近有機台', '回收什麼', '可以投什麼', '能投哪些', '回收品項', '回收項目', '機台位置', '去哪裡投', '站點位置'], url: 'https://www.ecocogroup.com/qa/', title: '如何查詢ECOCO站點與回收品項?', path: '官網 / 常見問題 / 使用設備相關 / 如何查詢ECOCO站點與回收品項?' },
+            { keywords: ['一直被退瓶', '退出來', '不吃瓶子', '被退回', '不能投瓶子', '退回', '投不進', '一直退出', '無法投瓶'], url: 'https://www.ecocogroup.com/qa/', title: '投瓶時，為什麼一直被機台退瓶？', path: '官網 / 常見問題 / 使用設備相關 / 投瓶時，為什麼一直被機台退瓶？' },
+            { keywords: ['黑屏', '黑掉', '螢幕壞掉', '螢幕沒顯示', '機台滿了', '滿袋', '袋子滿了', '中斷'], url: 'https://www.ecocogroup.com/qa/', title: '投瓶到一半，機台螢幕出現黑屏或機台滿袋，我的點數是否會不見呢？', path: '官網 / 常見問題 / 使用設備相關 / 投瓶到一半，機台螢幕出現黑屏或機台滿袋，我的點數是否會不見呢？' },
+            { keywords: ['點數沒收到', '點數沒入帳', '點數沒有進', '沒獲得點數', '沒有點數', '沒點數', '點數不見', '漏給點數', '沒加到分', '沒給點數'], url: 'https://www.ecocogroup.com/qa/', title: '為何沒有獲得回饋點數？', path: '官網 / 常見問題 / 點數相關 / 為何沒收到點數？' },
+            { keywords: ['設置站點', '增設站點', '新增站點', '設立站點', '我要設站', '想要機台', '可以來裝'], url: 'https://www.ecocogroup.com/qa/', title: '如何申請成為ECOCO環保站點？', path: '官網 / 常見問題 / 其他建議與合作相關 / 如何申請成為ECOCO環保站點？' }
         ];
 
         function checkFaqMatch(desc, type) {
@@ -1214,9 +972,9 @@
         }
 
         // ============================================================
-        // 3. 檔案上傳管理（追蹤 base64 供 GAS 存入 Drive）
+        // 3. 檔案上傳管理
         // ============================================================
-        let uploadedFiles = []; // [{name, type, base64}]
+        let uploadedFiles = [];
 
         // ============================================================
         // 4. 核心表單邏輯
@@ -1240,8 +998,11 @@
         function updateSubOptions() {
             const type = document.getElementById('issueType').value;
             const issueDesc = document.getElementById('issueDesc');
-            // 重設所有動態區塊
-            ['stationGroup', 'datetimeGroup', 'accountTransferGroup', 'transferFormGroup', 'machineSubProblemGroup', 'machineTypeGroup', 'arkPositionGroup', 'missingItemsGroup', 'pointSubProblemGroup'].forEach(id => document.getElementById(id).classList.remove('open'));
+            ['stationGroup', 'datetimeGroup', 'accountTransferGroup', 'transferFormGroup',
+             'machineSubProblemGroup', 'machineTypeGroup', 'arkPositionGroup',
+             'missingItemsGroup', 'pointSubProblemGroup'].forEach(id => {
+                document.getElementById(id).classList.remove('open');
+            });
             document.getElementById('descGroup').style.display = 'block';
             isTransferMode = false;
             document.getElementById('selectedStation').value = '';
@@ -1249,12 +1010,9 @@
             document.getElementById('stationSearch').disabled = true;
             document.getElementById('citySelect').value = '';
             document.getElementById('arkPosition').value = '';
-            document.getElementById('cityColWrapper').style.display = 'block'; // Reset to default block
+            document.getElementById('cityColWrapper').style.display = 'block';
             const stationList = document.getElementById('stationList');
-            if (stationList) {
-                stationList.classList.remove('active');
-                stationList.innerHTML = '';
-            }
+            if (stationList) { stationList.classList.remove('active'); stationList.innerHTML = ''; }
             ['qtyPET', 'qtyPP', 'qtyHDPE', 'qtyCan', 'qtyBat1', 'qtyBat3'].forEach(id => {
                 if (document.getElementById(id)) document.getElementById(id).value = '';
             });
@@ -1302,10 +1060,8 @@
             const isBottle = document.getElementById('typeBottle') && document.getElementById('typeBottle').checked;
             const isBattery = document.getElementById('typeBattery') && document.getElementById('typeBattery').checked;
             const isArk = document.getElementById('typeArk') && document.getElementById('typeArk').checked;
-
             const group = document.getElementById('missingItemsGroup');
             if (!group) return;
-
             if (isMissingPoints && (isBottle || isBattery || isArk)) {
                 group.classList.add('open');
                 document.getElementById('bottleItems').style.display = (isBottle || isArk) ? 'flex' : 'none';
@@ -1320,7 +1076,6 @@
             const isApp = document.getElementById('subApp') && document.getElementById('subApp').checked;
             const stationGroup = document.getElementById('stationGroup');
             const cityCol = document.getElementById('cityColWrapper');
-
             if (isExchange) {
                 stationGroup.classList.add('open');
                 document.getElementById('stationLabel').innerHTML = '發生商家 <span class="required">*</span>';
@@ -1348,28 +1103,43 @@
 
         function showStep(step) {
             document.querySelectorAll('.step-panel').forEach(el => { el.style.display = 'none'; el.classList.remove('active'); });
-            const p = document.getElementById(`step${step}`); p.style.display = 'block'; void p.offsetWidth; p.classList.add('active');
+            const p = document.getElementById(`step${step}`);
+            p.style.display = 'block'; void p.offsetWidth; p.classList.add('active');
             document.querySelectorAll('.step').forEach(el => {
-                let s = +el.getAttribute('data-step'); el.classList.remove('active', 'completed');
-                if (s === step) el.classList.add('active'); if (s < step) el.classList.add('completed');
+                let s = +el.getAttribute('data-step');
+                el.classList.remove('active', 'completed');
+                if (s === step) el.classList.add('active');
+                if (s < step) el.classList.add('completed');
             });
             document.getElementById('prevBtn').style.visibility = step === 1 ? 'hidden' : 'visible';
             document.getElementById('nextBtn').innerText = step === 3 ? '確認並送出' : '前往下一步 →';
         }
 
+        // ============================================================
+        // ★ 修復：handleNext — 正確分離各類型的驗證邏輯
+        // ============================================================
         function handleNext() {
+            // --- Step 1 驗證 ---
             if (currentStep === 1) {
                 const phone = document.getElementById('userPhone').value.trim();
                 const email = document.getElementById('userEmail').value.trim();
-                // ★ 手機號碼必須為 09 開頭 + 共 10 碼數字
-                if (!/^09\d{8}$/.test(phone)) { alert("手機號碼格式錯誤！請輸入 09 開頭的 10 碼數字，不可包含符號或空白。"); return; }
-                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert("信箱格式錯誤！請確保您填入完整的 @網域 (如 gmail.com)。"); return; }
+                if (!/^09\d{8}$/.test(phone)) {
+                    alert("手機號碼格式錯誤！請輸入 09 開頭的 10 碼數字，不可包含符號或空白。"); return;
+                }
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    alert("信箱格式錯誤！請確保您填入完整的 @網域 (如 gmail.com)。"); return;
+                }
             }
+
+            // --- Step 2 驗證 ---
             if (currentStep === 2) {
                 const type = document.getElementById('issueType').value;
                 if (!type) { alert("請選擇「主要問題分類」！"); return; }
+
+                // ── 帳號類型驗證 ──
                 if (type === 'account') {
-                    const tY = document.getElementById('transferYes').checked, tN = document.getElementById('transferNo').checked;
+                    const tY = document.getElementById('transferYes').checked;
+                    const tN = document.getElementById('transferNo').checked;
                     if (!tY && !tN) { alert("請選擇是否有「轉換帳號需求」。"); return; }
                     if (tY) {
                         if (!/^09\d{8}$/.test(document.getElementById('oldAccount').value.trim())) { alert("「原帳號」必須為 09 開頭的 10 碼手機號碼。"); return; }
@@ -1378,43 +1148,63 @@
                         if (!document.getElementById('transferReason').value.trim()) { alert("請填寫「轉換原因」。"); return; }
                         if (!/^09\d{8}$/.test(document.getElementById('newAccount').value.trim())) { alert("「新帳號」必須為 09 開頭的 10 碼手機號碼。"); return; }
                         if (!document.getElementById('contactTime').value) { alert("請選擇「可電話聯繫的時段」。"); return; }
-                    } else { if (!document.getElementById('issueDesc').value.trim()) { alert("請填寫「詳細說明」。"); return; } }
-                    if (type === 'machine') {
-                        if (!document.querySelector('input[name="machineSubProblem"]:checked')) { alert("請選擇「具體問題類型」。"); return; }
-                        const mt = document.querySelector('input[name="machineType"]:checked');
-                        if (!mt) { alert("請選擇「機台類型」。"); return; }
-                        if (mt.value === '方舟' && !document.getElementById('arkPosition').value) {
-                            alert("請選擇方舟機台「特定位置」。"); return;
-                        }
-                    } else if (type === 'point') {
-                        const prob = document.querySelector('input[name="pointSubProblem"]:checked');
-                        if (!prob) { alert("請選擇「具體問題類型」。"); return; }
-                        if (prob.value === '點數兌換優惠') {
-                            if (!document.getElementById('citySelect').value || !document.getElementById('stationSearch').value.trim()) {
-                                alert("請選擇「城市」並填寫「發生商家」名稱！"); return;
-                            }
-                        }
+                        // 帳號轉換模式，不需檢查 issueDesc，直接通過
+                        currentStep++; showStep(currentStep); return;
                     }
+                    // 非轉換帳號：檢查詳細說明
+                    if (!document.getElementById('issueDesc').value.trim()) { alert("請填寫「詳細說明」。"); return; }
+                }
 
-                    if (type === 'machine') {
-                        if (!document.getElementById('selectedStation').value || !document.getElementById('stationSearch').value.trim()) { alert("請選擇「城市」並從選單中挑選「發生站點」！"); return; }
+                // ── 機台類型驗證 ──
+                if (type === 'machine') {
+                    if (!document.querySelector('input[name="machineSubProblem"]:checked')) { alert("請選擇「具體問題類型」。"); return; }
+                    const mt = document.querySelector('input[name="machineType"]:checked');
+                    if (!mt) { alert("請選擇「機台類型」。"); return; }
+                    if (mt.value === '方舟' && !document.getElementById('arkPosition').value) { alert("請選擇方舟機台「特定位置」。"); return; }
+                    if (!document.getElementById('selectedStation').value || !document.getElementById('stationSearch').value.trim()) {
+                        alert("請選擇「城市」並從選單中挑選「發生站點」！"); return;
                     }
-                    if (type === 'machine' || type === 'point') {
-                        if (!document.getElementById('issueDateTime').value) { alert("請選擇「發生日期與時間」。"); return; }
+                    if (!document.getElementById('issueDateTime').value) { alert("請選擇「發生日期與時間」。"); return; }
+                    if (!document.getElementById('issueDesc').value.trim()) { alert("請填寫「詳細說明」。"); return; }
+                }
+
+                // ── 點數 / APP 類型驗證 ──
+                if (type === 'point') {
+                    const prob = document.querySelector('input[name="pointSubProblem"]:checked');
+                    if (!prob) { alert("請選擇「具體問題類型」。"); return; }
+                    if (prob.value === '點數兌換優惠') {
+                        if (!document.getElementById('citySelect').value || !document.getElementById('stationSearch').value.trim()) {
+                            alert("請選擇「城市」並填寫「發生商家」名稱！"); return;
+                        }
                     }
+                    if (!document.getElementById('issueDateTime').value) { alert("請選擇「發生日期與時間」。"); return; }
+                    if (!document.getElementById('issueDesc').value.trim()) { alert("請填寫「詳細說明」。"); return; }
+                }
+
+                // ── 其他類型驗證 ──
+                if (type === 'other') {
                     if (!document.getElementById('issueDesc').value.trim()) { alert("請填寫「詳細說明」。"); return; }
                 }
             }
-            if (currentStep < 3) { currentStep++; showStep(currentStep); } else { submitForm(); }
+
+            if (currentStep < 3) { currentStep++; showStep(currentStep); }
+            else { submitForm(); }
         }
-        function handlePrev() { if (currentStep > 1) { currentStep--; showStep(currentStep); } }
+
+        function handlePrev() {
+            if (currentStep > 1) { currentStep--; showStep(currentStep); }
+        }
 
         // ============================================================
-        // GAS 送出（含附件 base64 → Drive 連結寫入 Sheet）
+        // GAS 送出
         // ============================================================
         function submitToGAS(payload) {
             const scriptURL = "https://script.google.com/macros/s/AKfycbxScm1P74jvG7pDDEufTLChbR3UTmMEgSBuHMse4dBoMdIzPN0x7Us5N9Y2qkk7IlJ6ig/exec";
-            return fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(payload), headers: { 'Content-Type': 'text/plain;charset=UTF-8' } });
+            return fetch(scriptURL, {
+                method: 'POST', mode: 'no-cors',
+                body: JSON.stringify(payload),
+                headers: { 'Content-Type': 'text/plain;charset=UTF-8' }
+            });
         }
 
         function submitForm() {
@@ -1441,7 +1231,6 @@
             const phone = document.getElementById('userPhone').value;
             const name = document.getElementById('userName').value;
 
-            // 帳號轉換模式
             if (isTransferMode) {
                 const formData = {
                     ticketID: ticketNumber, timestamp: new Date().toISOString(),
@@ -1459,7 +1248,6 @@
                 return;
             }
 
-            // FAQ 智能配對
             const matchedFaq = checkFaqMatch(issueDesc, userType);
             if (matchedFaq) {
                 setTimeout(() => {
@@ -1474,7 +1262,6 @@
                 return;
             }
 
-            // 一般送出
             let finalDesc = issueDesc;
             if (userType === 'machine' || userType === 'point') {
                 let prefix = [];
@@ -1484,10 +1271,8 @@
                     if (mTypeStr === '方舟') mTypeStr += ` (${document.getElementById('arkPosition').value})`;
                     let subProbObj = document.querySelector('input[name="machineSubProblem"]:checked');
                     let subProbStr = subProbObj ? subProbObj.value : '';
-
                     if (subProbStr) prefix.push(`【具體問題：${subProbStr}】`);
                     if (mTypeStr) prefix.push(`【機台類型：${mTypeStr}】`);
-
                     let itemsArr = [];
                     if (document.getElementById('missingItemsGroup').classList.contains('open')) {
                         const getV = id => document.getElementById(id).value;
@@ -1504,7 +1289,6 @@
                     let subProbStr = subProbObj ? subProbObj.value : '';
                     if (subProbStr) prefix.push(`【具體問題：${subProbStr}】`);
                 }
-
                 if (prefix.length > 0) finalDesc = prefix.join(' ') + '\n\n' + issueDesc;
             }
 
@@ -1524,7 +1308,11 @@
             document.getElementById('displaySentEmail').innerText = email;
             document.getElementById('successScreen').classList.add('active');
         }
-        function showError() { document.getElementById('loading').remove(); alert("伺服器連線異常，請稍後再試。"); }
+
+        function showError() {
+            document.getElementById('loading').remove();
+            alert("伺服器連線異常，請稍後再試。");
+        }
 
         // ============================================================
         // Email 自動補全
@@ -1540,7 +1328,8 @@
                     if (m.length > 0 && !(m.length === 1 && m[0] === suf)) {
                         m.forEach(d => {
                             let el = document.createElement('div'); el.className = 'email-item';
-                            el.innerText = pre + '@' + d; el.onclick = function () { inp.value = this.innerText; dd.classList.remove('active'); };
+                            el.innerText = pre + '@' + d;
+                            el.onclick = function () { inp.value = this.innerText; dd.classList.remove('active'); };
                             dd.appendChild(el);
                         });
                         dd.classList.add('active');
@@ -1551,7 +1340,7 @@
         }
 
         // ============================================================
-        // 站點搜尋下拉 (第二欄：依城市篩選)
+        // ★ 修復：移除重複定義，保留完整版站點搜尋下拉
         // ============================================================
         function setupSearchDropdown() {
             const input = document.getElementById('stationSearch');
@@ -1582,7 +1371,7 @@
         }
 
         // ============================================================
-        // 檔案上傳 (含 base64 追蹤)
+        // 檔案上傳
         // ============================================================
         function setupFileUpload() {
             const area = document.getElementById('uploadArea'), fi = document.getElementById('fileInput'), grid = document.getElementById('previewGrid');
@@ -1599,15 +1388,13 @@
                     if (isI && Array.from(grid.children).filter(el => el.dataset.type === 'image').length >= 3) { alert('最多 3 張圖片。'); return; }
                     if (isV && Array.from(grid.children).filter(el => el.dataset.type === 'video').length >= 1) { alert('最多 1 個影片。'); return; }
                     if (file.size > 5 * 1024 * 1024) { alert(`${file.name} 超過 5MB，請壓縮後重試！`); return; }
-
                     const reader = new FileReader();
                     reader.onload = ev => {
                         const fileId = Date.now() + '_' + Math.random().toString(36).substr(2, 5);
-                        // ★ 追蹤 base64 資料 (去除 data:xxx;base64, 前綴)
                         const base64Data = ev.target.result.split(',')[1];
                         uploadedFiles.push({ id: fileId, name: file.name, type: file.type, base64: base64Data });
-
-                        const div = document.createElement('div'); div.className = 'preview-item'; div.dataset.type = isV ? 'video' : 'image'; div.dataset.fileId = fileId;
+                        const div = document.createElement('div'); div.className = 'preview-item';
+                        div.dataset.type = isV ? 'video' : 'image'; div.dataset.fileId = fileId;
                         div.innerHTML = isV
                             ? `<video src="${ev.target.result}" style="width:100%;height:100%;object-fit:cover;" controls playsinline></video><button class="remove-btn" onclick="removeFile(this)" title="刪除">✕</button>`
                             : `<img src="${ev.target.result}" alt="Preview"><button class="remove-btn" onclick="removeFile(this)" title="刪除">✕</button>`;
@@ -1619,7 +1406,6 @@
             }
         }
 
-        // 移除檔案時同步移除 base64 資料
         function removeFile(btn) {
             const item = btn.parentElement;
             const fid = item.dataset.fileId;
